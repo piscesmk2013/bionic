@@ -148,10 +148,6 @@ cc_defaults {
         },
     },
 
-    lto: {
-        never: true,
-    },
-
     apex_available: ["com.android.runtime"],
 
     tidy_disabled_srcs: ["upstream-*/**/*.c"],
@@ -1427,6 +1423,9 @@ cc_library_static {
         },
     },
     name: "libc_syscalls",
+    lto: {
+        never: true,
+    },
 }
 
 // ========================================================
@@ -1688,6 +1687,9 @@ cc_library_static {
         "libc_init_static",
         "libc_unwind_static",
     ],
+    lto: {
+        never: true,
+    },
 }
 
 filegroup {
@@ -1787,6 +1789,10 @@ cc_defaults {
     static_libs: [
         "libdl_android",
     ],
+
+    lto: {
+        never: true,
+    },
 
     nocrt: true,
 
