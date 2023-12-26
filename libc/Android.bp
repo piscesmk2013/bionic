@@ -146,10 +146,6 @@ cc_defaults {
             },
         },
     },
-
-    lto: {
-        never: true,
-    },
 }
 
 libc_scudo_product_variables = {
@@ -1413,6 +1409,9 @@ cc_library_static {
         },
     },
     name: "libc_syscalls",
+    lto: {
+        never: true,
+    },
 }
 
 // ========================================================
@@ -1666,6 +1665,9 @@ cc_library_static {
         "libc_init_static",
         "libc_unwind_static",
     ],
+    lto: {
+        never: true,
+    },
 }
 
 filegroup {
@@ -1765,6 +1767,10 @@ cc_defaults {
     static_libs: [
         "libdl_android",
     ],
+
+    lto: {
+        never: true,
+    },
 
     nocrt: true,
 
