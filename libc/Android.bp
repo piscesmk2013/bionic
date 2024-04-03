@@ -2084,7 +2084,7 @@ cc_library_headers {
 // libstdc++.so and libstdc++.a.
 // ========================================================
 
-cc_defaults {
+cc_library {
     defaults: ["libc_defaults"],
     include_dirs: ["bionic/libstdc++/include"],
     srcs: [
@@ -2092,9 +2092,10 @@ cc_defaults {
         "bionic/__cxa_pure_virtual.cpp",
         "bionic/new.cpp",
     ],
-    name: "libstdc++_defaults",
+    name: "libstdc++",
     static_ndk_lib: true,
     static_libs: ["libasync_safe"],
+    vendor_available: true,
     apex_available: [
         "//apex_available:platform",
     ],
@@ -2133,17 +2134,6 @@ cc_defaults {
             version_script: ":libstdc++.x86_64.map",
         },
     },
-}
-
-cc_library {
-    name: "libstdc++",
-    defaults: ["libstdc++_defaults"],
-}
-
-cc_library_shared {
-    name: "libstdc++_vendor",
-    defaults: ["libstdc++_defaults"],
-    vendor: true,
 }
 
 genrule {
