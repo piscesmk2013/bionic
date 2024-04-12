@@ -136,7 +136,7 @@ cc_defaults {
     tidy_disabled_srcs: ["upstream-*/**/*.c"],
 }
 
-libc_scudo_product_variables = {
+libc_product_variables = {
     malloc_use_scudo: {
         cflags: ["-DUSE_SCUDO"],
         whole_static_libs: ["libscudo"],
@@ -145,10 +145,7 @@ libc_scudo_product_variables = {
             "libc_jemalloc_wrapper",
         ],
     },
-}
-
-libc_mimalloc_product_variables = {
-    malloc_not_svelte: {
+    malloc_use_mimalloc: {
         cflags: ["-DUSE_MIMALLOC"],
         whole_static_libs: [
             "libmimalloc",
@@ -172,7 +169,7 @@ cc_defaults {
         "libc_jemalloc_wrapper",
     ],
     header_libs: ["gwp_asan_headers"],
-    product_variables: libc_mimalloc_product_variables,
+    product_variables: libc_product_variables,
 }
 
 // Functions not implemented by jemalloc directly, or that need to
